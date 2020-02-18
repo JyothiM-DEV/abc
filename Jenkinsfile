@@ -8,6 +8,9 @@ node('master')
     {
         sh label: '', script: 'mvn package'
     }
-    
+    stage('Continous deploy')
+    {
+	sh label: '', script: 'scp /home/ubuntu/.jenkins/multibranch_master/webapp/target/webapp.war ubuntu@172.31.5.129:/var/lib/tomcat8/webapps/testapp.war'
+    }
     
 }
