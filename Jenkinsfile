@@ -17,4 +17,8 @@ node('master')
 	git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
 	sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/multibranch_master/testing.jar'
     }
+    stage('continous delivery')
+    {
+	sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/multibranch_master/webapp/target/webapp.war ubuntu@172.31.12.25:/var/lib/tomcat8/webapps/prodapp.war'
+    }
 }
