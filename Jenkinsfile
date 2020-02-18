@@ -10,15 +10,15 @@ node('master')
     }
     stage('Continous deploy')
     {
-	sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/multibranch_master/webapp/target/webapp.war ubuntu@172.31.5.129:/var/lib/tomcat8/webapps/testapp.war'
+	sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/multibranch_jyothi/webapp/target/webapp.war ubuntu@172.31.5.129:/var/lib/tomcat8/webapps/testapp.war'
     }
     stage('continous testing')
     {
 	git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
-	sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/multibranch_master/testing.jar'
+	sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/multibranch_jyothi/testing.jar'
     }
     stage('continous delivery')
     {
-	sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/multibranch_master/webapp/target/webapp.war ubuntu@172.31.12.25:/var/lib/tomcat8/webapps/prodapp.war'
+	sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/multibranch_jyothi/webapp/target/webapp.war ubuntu@172.31.12.25:/var/lib/tomcat8/webapps/prodapp.war'
     }
 }
