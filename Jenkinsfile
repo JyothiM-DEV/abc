@@ -15,5 +15,6 @@ node('master')
     stage('continous testing')
     {
 	git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
+	sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/multibranch_master/testing.jar'
     }
 }
